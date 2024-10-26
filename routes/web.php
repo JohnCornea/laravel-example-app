@@ -423,7 +423,7 @@ use Illuminate\Support\Facades\Hash;
 // Route::get('/', function() {
 
     // CREATE
-    // DB::insert('INSERT INTO users (name, email, password) values(?, ?, ?)', ['Ion', 'ionut@gmail.com', 'secret123']);
+    // DB::insert('INSERT INTO users (name, email, password) values(?, ?, ?)', ['rares', 'rares@gmail.com', 'secret123']);
 
     // READ
     // $user = DB::select('SELECT * FROM users WHERE id =?', [1]);
@@ -447,5 +447,7 @@ Route::get('/', function() {
     return view('welcome');
 });
 
-Route::get('/users', [UsersController::class, 'index']);
+Route::resource('/users', UsersController::class);
+
+// Route::get('/users', [UsersController::class, 'index']);
 

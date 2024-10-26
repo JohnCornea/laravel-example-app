@@ -54,7 +54,30 @@ class UsersController extends Controller
         // }
 
         //DATABASE - QUERY BUILDER SMALL PROJECT
-        return view('users.index');
+        $users = DB::table('users')->get();
+
+        return view('users.index', compact('users'));
     }
 
+    public function create()
+    {
+
+    }
+
+    public function store(Request $request)
+    {
+
+    }
+
+    public function show(string $id)
+    {
+        $user = DB::table('users')->find($id);
+
+        return view('users.show', compact('user'));
+    }
+
+    public function edit(string $id)
+    {
+
+    }
 }
