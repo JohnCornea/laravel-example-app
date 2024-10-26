@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersUpdateRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -77,6 +78,26 @@ class UsersController extends Controller
     }
 
     public function edit(string $id)
+    {
+
+    }
+
+    public function update(UsersUpdateRequest $request, string $id)
+    {
+        $inputs = $request->all();
+
+        $alldata = $request->safe()
+        ->merge($inputs)
+        ->except(['_token', '_method', 'password_confirmation']);
+
+        DB::table('users')
+            ->where('id', $id)
+            ->update($alldata);
+
+        return redirect()->route('users.index');
+    }
+
+    public function destroy(string $id)
     {
 
     }

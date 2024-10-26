@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\App;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +23,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Check if app is on prod, otherwise, this implementation makes no sense for local
+        // Password::defaults(function() {
+        //     $theRules = Password::min(6)->mixedCase()->symbols()->numbers();
+
+        //     return $this->app->isProduction() ? $theRules->uncompromised() : $theRules;
+        // });
+
         // Way of translating the URI of the routes by overwriting 
         Route::resourceVerbs([
             'create' => 'creeaza',

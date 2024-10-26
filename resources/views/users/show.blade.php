@@ -5,27 +5,52 @@
 @endsection
 
 @section('content')
-    <h1>Users</h1>
-
-    {{-- {{$user->name}} --}}
+    
 
     <div class="row">
-        <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+        <div class="col-6 offset-3">
+            <h1 class="text-center">Users</h1>
+            <form method="post" action="{{route('users.update', $user->id)}}">
+
+                @csrf
+                @method('PUT')
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input name="name" value="{{$user->name}}" type="text" class="form-control @error('name') is-invalid @enderror"  id="name" aria-describedby="nameInput">
+                    @error('name')
+                    <div id="nameInput" class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input name="email" value="{{$user->email}}" type="email" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailInput">
+                    @error('email')
+                    <div id="emailInput" class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>    
+                    <input value="{{$user->password}}" name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password" aria-describedby="passwordInput">
+                    @error('password')
+                    <div id="passwordInput" class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="passwordConfirm" class="form-label">Confirm Password</label>    
+                    <input value="{{$user->password}}" name="password_confirmation" name="email" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="passwordConfirm" aria-describedby="passwordConfirmInput">
+                    @error('password_confirmation')
+                    <div id="passwordConfirmationInput" class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>    
+                    <input value="{{\Carbon\Carbon::parse($user->created_at)->format('Y-m-d')}}" name="created_at" type="date" class="form-control" id="date" aria-describedby="dateInput">
+                    {{-- <div id="dateInput" class="invalid-feedback"></div> --}}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
 @endsection
 
