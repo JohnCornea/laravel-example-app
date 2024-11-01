@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 
 // Dependency injection - manage the dependencies between different components or objects
@@ -444,9 +447,35 @@ use Illuminate\Support\Facades\Hash;
 
 // DATABASE - QUERY BUILDER SMALL PROJECT
 Route::get('/', function() {
-    return view('welcome');
-});
+    // return view('welcome');
 
+    // Schema::connection('sqlite2')->create('users', function(Blueprint $table){
+    //     $table->id();
+    //     $table->string('name');
+    //     $table->string('username', '100');
+    //     $table->timestamps();
+    // });
+
+    // try {
+    //     Schema::connection('sqlite2')->table('users', function(Blueprint $table){
+    //         $table->string('email')->unique();
+    //     });
+    // } catch(Exception $e) {
+    //     echo $e->getMessage();
+    // }
+
+    try {
+        Schema::connection('sqlite2')->rename('users', 'custom_users');
+
+        return 'Table updated!';
+    } catch(Exception $e) {
+        echo $e->getMessage();
+    }
+
+})->name('home');
+
+Route::post('/create/dummy', [UsersController::class, 'created_dummy_users'])->name('users.create.dummy');
+Route::delete('/delete/dummy', [UsersController::class, 'delete_dummy_users'])->name('users.delete.dummy');
 Route::resource('/users', UsersController::class);
 
 // Route::get('/users', [UsersController::class, 'index']);

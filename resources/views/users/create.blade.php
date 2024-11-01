@@ -9,7 +9,7 @@
 
     
 
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-6 offset-3">
             <h1 class="text-center">Create Users</h1>
             <form method="post" action="{{route('users.store')}}">

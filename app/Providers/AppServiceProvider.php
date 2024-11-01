@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\App;
+use Illuminate\Pagination\Paginator;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -36,5 +37,7 @@ class AppServiceProvider extends ServiceProvider
             'show' => 'afiseaza',
             'edit' => 'editeaza',
         ]);
+
+        Paginator::useBootstrapFive();
     }
 }

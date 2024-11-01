@@ -200,8 +200,10 @@
       @extends('layouts.master')
       @section('content')
 
-        <h2>Welcome</h2>
-
+       
+      <div class="row">
+        <h2>Welcome page!</h2>
+      </div>
         {{-- <x-button-component :$type class="down"></x-button-component> --}}
         {{-- <x-modal-component></x-modal-component> --}}
         {{-- <x-link></x-link> --}}

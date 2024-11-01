@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
+use Faker\Factory;
 
 class UsersController extends Controller
 {
@@ -55,10 +58,22 @@ class UsersController extends Controller
         //     return redirect('/');
         // }
 
-        //DATABASE - QUERY BUILDER SMALL PROJECT
-        $users = DB::table('users')->get();
+        // $users = DB::select('select * from users order by id asc limit 10 offset 10');
+        // $users = DB::select('select * from users where id > 10 order by id asc limit 10');
 
+        //DATABASE - QUERY BUILDER SMALL PROJECT
+        $users = DB::table('users')->paginate(10);
+
+        // dd($users);
+        
         return view('users.index', compact('users'));
+        // $users = DB::table('users')->whereIn('id', [3,5,6])->get();
+        // $users = DB::table('users')->groupBy('id')->having('id', '>' , 6)->get();
+        // $users = DB::table('users')->distinct()->get();
+        // $query = DB::table('users')->select('email');
+        // $users = $query->addSelect('id')->get();
+
+        // dd($users);
     }
 
     public function create()
@@ -111,6 +126,50 @@ class UsersController extends Controller
 
     public function destroy(string $id)
     {
+        // DB::table('users')->find($id)->delete(); ==> THIS DOES NOT WORK
+        $user = DB::table('users')->where('id', $id)->delete();
 
+        return redirect()->back();
+    }
+
+    public function created_dummy_users(Request $request)
+    {
+        $faker = Factory::create();
+
+        for($i = 0; $i < 30; $i++)
+        {
+
+            DB::table('users')->insert([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => Hash::make($faker->password(8)),
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
+        return redirect()->back();
+        // $users = Storage::json('public/users.json');
+        // $time = Carbon::now();
+
+        // foreach ($users as $user){
+        //     DB::table('users')->insert([
+        //         'name'=> $user['name'],
+        //         'email'=> $user['email'],
+        //         'password'=> Hash::make($user['email']),
+        //         'created_at'=> $time->addHour(),
+        //         'updated_at'=> $time->addHour(),
+        //     ]);
+        // }
+        // return redirect()->back();
+        // dd($request);
+    }
+
+    public function delete_dummy_users(Request $request)
+    {
+        DB::table('users')->truncate();
+
+        return redirect()->back();
     }
 }
