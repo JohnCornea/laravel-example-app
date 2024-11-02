@@ -507,10 +507,10 @@ Route::get('/', function() {
     // return 'User deleted';
 
     // Builders & Collections
-    foreach(User::orderBy('created_at', 'desc')->get() as $user) {
-        echo "<br>";
-        echo $user->name;
-    }
+    // foreach(User::orderBy('created_at', 'desc')->get() as $user) {
+    //     echo "<br>";
+    //     echo $user->name;
+    // }
 
 
 })->name('home');
