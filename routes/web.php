@@ -10,7 +10,6 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\CalculateCode;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
@@ -20,6 +19,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use App\Models\Post;
+use App\Models\User;
 
 
 // Dependency injection - manage the dependencies between different components or objects
@@ -464,13 +465,53 @@ Route::get('/', function() {
     //     echo $e->getMessage();
     // }
 
-    try {
-        Schema::connection('sqlite2')->rename('users', 'custom_users');
+    // try {
+    //     Schema::connection('sqlite2')->rename('users', 'custom_users');
 
-        return 'Table updated!';
-    } catch(Exception $e) {
-        echo $e->getMessage();
+    //     return 'Table updated!';
+    // } catch(Exception $e) {
+    //     echo $e->getMessage();
+    // }
+
+    // CRUD FOR ELOQUENT SECTION 22
+    // Create 
+    // $post = new Post();
+    // $post->title ="First post";
+    // $post->body ="Body text";
+    // $post->save();
+    // return 'post created';
+
+    // Retrieve & Reading
+    // dd(Post::find(1));
+    // Post::firstWhere('role', 'status');
+    // Post::where('id', 1)->firstOr(function() {
+    // });
+
+    // Retrieve & Reading 2
+    // These are for the collections
+    // dd(User::all());
+    // dd(User::select('email')->orderBy('id', 'desc')->get());
+
+    // Update
+    // $user = User::find(1);
+    // $user->name = 'John Cornea';
+    // $user->where('id', 2)->update([
+    //     'name' => 'Josephina',
+    //     'email' => 'Josel@gmail.com'
+    // ]);
+    // return 'User Updated';
+
+    // Delete
+    // $user = User::find(1)->delete();
+    
+    // return 'User deleted';
+
+    // Builders & Collections
+    foreach(User::orderBy('created_at', 'desc')->get() as $user) {
+        echo "<br>";
+        echo $user->name;
     }
+
 
 })->name('home');
 
