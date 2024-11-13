@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\Post;
+use App\Models\Comment;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,11 +21,21 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([
+        // $this->call([
 
             // UsersTableSeeder::class,
             // PostSeeder::class,
-            MyCrazySeeder::class, 
+        //     MyCrazySeeder::class, 
+        // ]);
+        $this->call([
+            UserSeeder::class,
+            CommentSeeder::class,
+            PostSeeder::class,
         ]);
+
+        // User::factory(10)
+        //     ->has(Post::factory()->count(2)
+        //     ->has(Comment::factory()->count(2)))
+        //     ->create();
     }
 }

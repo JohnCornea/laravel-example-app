@@ -21,6 +21,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 
 
 // Dependency injection - manage the dependencies between different components or objects
@@ -512,6 +513,28 @@ Route::get('/', function() {
     //     echo $user->name;
     // }
 
+    // Schema::disableForeignKeyConstraints();
+
+    // User::truncate();
+    // Comment::truncate();
+    // Post::truncate();
+
+    // dd(Comment::find(1)->user->name);
+    // dd(Post::find(2)->title);
+    // dd(User::find(1)->comment->message);
+
+    $user = [
+        'name' => 'CORNEA IONUT',
+        'email' => 'cornea@gmail.com',
+        'password' => 'secret123',
+    ];
+
+    // Creating a model from the array above
+    // $newUser = new User($user);
+
+    // $comment = Comment::find(5)->user()->delete();
+
+    // return "DELETED";
 
 })->name('home');
 
