@@ -523,11 +523,39 @@ Route::get('/', function() {
     // dd(Post::find(2)->title);
     // dd(User::find(1)->comment->message);
 
-    $user = [
-        'name' => 'CORNEA IONUT',
-        'email' => 'cornea@gmail.com',
-        'password' => 'secret123',
-    ];
+    // DATABASE ORM CRUD
+    // dd(User::find(1)->posts);
+    // dd(Post::find(1)->user);
+
+    // CREATE & UPDATE
+    // $post1 = new Post(
+    //     [
+    //         'title'=> 'POST 1',
+    //         'body'=> 'UNU 1'
+    //     ]
+    // );
+
+    // $post2 = new Post(
+    //     [
+    //         'title'=> 'POST DOI',
+    //         'body'=> 'DOI 2'
+    //     ]
+    // );
+
+    // User::find(1)->posts()->saveMany([
+    //     $post1, $post2
+    // ]);
+    // return response(200);
+
+    
+    // DELETE
+    dd(User::find(6)->posts()->whereId(6)->delete());
+
+    // $user = [
+    //     'name' => 'CORNEA IONUT',
+    //     'email' => 'cornea@gmail.com',
+    //     'password' => 'secret123',
+    // ];
 
     // Creating a model from the array above
     // $newUser = new User($user);
