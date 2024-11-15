@@ -16,8 +16,14 @@ class Comment extends Model
         return $this->hasOne(User::class);
     }
 
+    // public function post()
+    // {
+    //     return $this->hasOne(Post::class);
+    // }
+
     public function post()
     {
-        return $this->hasOne(Post::class);
+        return $this->belongsTo(Post::class);
     }
+
 }

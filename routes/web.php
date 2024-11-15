@@ -449,6 +449,32 @@ use App\Models\Comment;
 
 // DATABASE - QUERY BUILDER SMALL PROJECT
 Route::get('/', function() {
+
+    // dd(Post::find(10)->user()->delete());
+
+    // $post = Post::find(1);
+
+    // $post->title = "UPDATED FROM THE PUSH SHOW";
+    // $post->comments[0]->message = "TEST UPDATED";
+    // $post->user->name = "PUSH NAME UPDATED";
+
+    // $post->push();
+
+    // dd($post->comments);
+
+    // $post = (Comment::find(1)->post);
+
+    // $post->title = "NEW TITLE";
+    // $post->body = "NEW BODY";
+    // $post->save();
+
+    // Comment::find(2)->post()->associate(Post::find(3))->save();
+
+    // $comment = Comment::find(2);
+    // $post = Post::find(3);
+    // $comment->post()->associate($post);
+    // $comment->save();
+
     // return view('welcome');
 
     // Schema::connection('sqlite2')->create('users', function(Blueprint $table){
@@ -549,7 +575,7 @@ Route::get('/', function() {
 
     
     // DELETE
-    dd(User::find(6)->posts()->whereId(6)->delete());
+    // dd(User::find(6)->posts()->whereId(6)->delete());
 
     // $user = [
     //     'name' => 'CORNEA IONUT',
