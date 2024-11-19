@@ -11,6 +11,10 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'message',
+    ];
+
     public function user()
     {
         return $this->hasOne(User::class);

@@ -450,6 +450,26 @@ use App\Models\Comment;
 // DATABASE - QUERY BUILDER SMALL PROJECT
 Route::get('/', function() {
 
+    $comment = ['message' => "God is TRUE ADONAI" . fake()->sentence];
+
+    // User::find(3)->postComments()->create($comment);
+
+    // dd(User::find(3)->postComments()->first()->delete($comment));
+
+    // $comment = ['post_id'=> 5, 'message'=> 'New message created 22'];
+
+    // $data = User::find(1)->postComment[0]->post->user->posts->each(function ($post){
+    //     return $post->id === 1 ? $post->delete() : $post->refresh();
+    // });
+
+    // dd($data);
+
+    // $comment = ['message'=> "hello from ro updated 5"];
+
+    // dd(User::find(1)->postComment()->get()->where('id', 5)->first()->update($comment));
+
+    // dd(User::find(1)->postComment[0]->message);
+
     // dd(Post::find(10)->user()->delete());
 
     // $post = Post::find(1);
