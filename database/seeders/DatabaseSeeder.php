@@ -28,9 +28,10 @@ class DatabaseSeeder extends Seeder
         //     MyCrazySeeder::class, 
         // ]);
         $this->call([
-            UserSeeder::class,
-            CommentSeeder::class,
-            PostSeeder::class,
+            RoleSeeder::class,
+            // UserSeeder::class,
+            // CommentSeeder::class,
+            // PostSeeder::class,
         ]);
 
         // User::factory(10)

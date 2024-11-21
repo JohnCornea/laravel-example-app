@@ -22,6 +22,7 @@ use Illuminate\Database\Schema\Blueprint;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Role;
 
 
 // Dependency injection - manage the dependencies between different components or objects
@@ -450,7 +451,35 @@ use App\Models\Comment;
 // DATABASE - QUERY BUILDER SMALL PROJECT
 Route::get('/', function() {
 
-    $comment = ['message' => "God is TRUE ADONAI" . fake()->sentence];
+    // $user = User::find(3);
+
+    // $user->roles()->attach(1);
+    // $user->roles()->detach(1);
+    // $user->roles()->sync(1);
+    // $user->roles()->syncWithoutDetaching(1, 2, 4);
+    // $user->roles()->updateExistingPivot(1);
+    // $user->roles()->create(['name' => 'student']);
+
+    // $role = new Role(['name' => 'teacher']);
+
+    // $user->roles()->save($role);
+
+    // $user->roles()->toggle([109 => ['created_at' => now()]]);
+    // $user->roles()->toggle([10, 11, 12]);
+
+    // Role::destroy([11, 12]);
+
+    // $user->roles()->updateExistingPivot(109, ['user_id'=> 6]);
+
+    // $comment = new Comment(['message'=>'NEW COMMENT']);
+
+    // Post::find(9)->comments()->save($comment);
+
+    // dd(User::find(3)->name) ;
+
+    // $user->roles()->create(['name' => 'student']);
+
+    // $comment = ['message' => "God is TRUE ADONAI" . fake()->sentence];
 
     // User::find(3)->postComments()->create($comment);
 
