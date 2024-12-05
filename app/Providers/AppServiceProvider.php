@@ -31,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
         //     return $this->app->isProduction() ? $theRules->uncompromised() : $theRules;
         // });
 
+        // Model::unguard();
+
         // Way of translating the URI of the routes by overwriting 
         Route::resourceVerbs([
             'create' => 'creeaza',

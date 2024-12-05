@@ -23,6 +23,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Role;
+use App\Models\Image;
 
 
 // Dependency injection - manage the dependencies between different components or objects
@@ -450,6 +451,21 @@ use App\Models\Role;
 
 // DATABASE - QUERY BUILDER SMALL PROJECT
 Route::get('/', function() {
+
+    $user = User::find(3);
+    $post = Post::find(2);
+    $image = Image::find(12);
+
+    dd($image->imageable->title);
+
+    // $image = new Image(['path' => fake()->imageUrl('100', '50')]);
+
+    // $user->image()->save($image);
+    // $post->image()->save($image);
+    // dd($user->image()->update(['path'=> fake()->imageUrl('100', '50')]));
+    // $user->image()->delete();
+
+    // return "Image saved";
 
     // $user = User::find(3);
 

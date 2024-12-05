@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
         //     MyCrazySeeder::class, 
         // ]);
         $this->call([
-            RoleSeeder::class,
+            ImageSeeder::class,
+            // RoleSeeder::class,
             // UserSeeder::class,
             // CommentSeeder::class,
             // PostSeeder::class,
