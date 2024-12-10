@@ -24,6 +24,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Models\Role;
 use App\Models\Image;
+use App\Models\Tag;
 
 
 // Dependency injection - manage the dependencies between different components or objects
@@ -452,11 +453,25 @@ use App\Models\Image;
 // DATABASE - QUERY BUILDER SMALL PROJECT
 Route::get('/', function() {
 
-    $user = User::find(3);
-    $post = Post::find(2);
-    $image = Image::find(12);
+    // dd(Tag::find(2)->comments);
 
-    dd($image->imageable->title);
+    $post = Post::find(2);
+    // dd($post->tags);
+    // $comment = Comment::find(1);
+    $tag = new Tag;
+    // // $tag->name = "laravel";
+    $tag->name = "PHP";
+    $post->tags()->save($tag);
+    // $comment->tags()->save($tag);
+
+    // $user = User::find(3);
+    // dd($user->oldestImage);
+
+    // $user = User::find(3);
+    // $post = Post::find(2);
+    // $image = Image::find(12);
+
+    // dd($image->imageable);
 
     // $image = new Image(['path' => fake()->imageUrl('100', '50')]);
 
